@@ -21,7 +21,6 @@ class Network
     main_chars = total_characters.filter do |char|
       char.salary > 500_000 && char.name == char.name.upcase
     end
-    main_chars
   end
 
   def actors_by_show
@@ -30,5 +29,29 @@ class Network
       by_show[show] = show.actors.sort
     end
     by_show
+  end
+
+  def shows_by_actor
+    by_actor = {}
+    @shows.each do |show|
+      show.actors.each do |actor|
+        if by_actor[actor] == nil
+          by_actor[actor] = [show]
+        else
+          by_actor[actor] << show
+        end
+      end
+    end
+    by_actor
+  end
+
+  def prolific_actors
+    prolifics = []
+    shows_by_actor.each do |actor, shows|
+      if shows.length > 1
+        prolifics << actor
+      end
+    end
+    prolifics
   end
 end
