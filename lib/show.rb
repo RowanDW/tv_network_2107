@@ -7,7 +7,7 @@ class Show
   end
 
   def total_salary
-    salary = characters.sum do |char|
+    characters.sum do |char|
       char.salary
     end
   end
@@ -20,7 +20,7 @@ class Show
   end
 
   def actors
-    actor_list = characters.map do |char|
+    characters.map do |char|
       char.actor
     end
   end
