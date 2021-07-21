@@ -7,11 +7,9 @@ class Show
   end
 
   def total_salary
-    salary = 0
-    characters.each do |char|
-      salary += char.salary
+    salary = characters.sum do |char|
+      char.salary
     end
-    salary
   end
 
   def highest_paid_actor
@@ -25,6 +23,5 @@ class Show
     actor_list = characters.map do |char|
       char.actor
     end
-    actor_list
   end
 end
